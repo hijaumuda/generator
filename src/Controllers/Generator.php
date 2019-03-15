@@ -551,6 +551,7 @@ class Generator
             $this->generateFile('CreateResponse', [
                 'DummyNamespace' => ucfirst($this->removeFileNameFromEndOfNamespace($this->create_response_namespace)),
                 'dummy_small_plural_model' => strtolower(str_plural($this->model)),
+                'dummy_small_model' => strtolower($this->model),
             ], lcfirst($this->create_response_namespace));
         }
 
@@ -560,6 +561,7 @@ class Generator
                 'DummyNamespace' => ucfirst($this->removeFileNameFromEndOfNamespace($this->edit_response_namespace)),
                 'DummyModelNamespace'         => $this->model_namespace,
                 'dummy_small_plural_model' => strtolower(str_plural($this->model)),
+                'dummy_small_model' => strtolower($this->model),
             ], lcfirst($this->edit_response_namespace));
         }
 

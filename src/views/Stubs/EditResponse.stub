@@ -9,14 +9,14 @@ class EditResponse implements Responsable
     /**
      * @var DummyModelNamespace
      */
-    protected $dummy_small_plural_model;
+    protected $dummy_small_model;
 
     /**
-     * @param DummyModelNamespace $dummy_small_plural_model
+     * @param DummyModelNamespace $dummy_small_model
      */
-    public function __construct($dummy_small_plural_model)
+    public function __construct($dummy_small_model)
     {
-        $this->dummy_small_plural_model = $dummy_small_plural_model;
+        $this->dummy_small_model = $dummy_small_model;
     }
 
     /**
@@ -29,7 +29,7 @@ class EditResponse implements Responsable
     public function toResponse($request)
     {
         return view('backend.dummy_small_plural_model.edit')->with([
-            'dummy_small_plural_model' => $this->dummy_small_plural_model
+            'dummy_small_model' => $this->dummy_small_model
         ]);
     }
 }
