@@ -1,6 +1,6 @@
 <?php
 
-namespace Bvipul\Generator;
+namespace Hijaumuda\Generator;
 
 use Illuminate\Database\Eloquent\Model;
 

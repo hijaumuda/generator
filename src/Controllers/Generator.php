@@ -1,16 +1,11 @@
 <?php
 
-namespace Bvipul\Generator\Controllers;
+namespace Hijaumuda\Generator\Controllers;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
 
-/**
- * Class Generator.
- *
- * @author Vipul Basapati <basapativipulkumar@gmail.com | https://github.com/bvipul>
- */
 class Generator
 {
     /**
@@ -959,7 +954,7 @@ class Generator
     public function getStubPath()
     {
         $path = resource_path('views'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'generator'.DIRECTORY_SEPARATOR.'Stubs'.DIRECTORY_SEPARATOR);
-        $package_stubs_path = base_path('vendor'.DIRECTORY_SEPARATOR.'bvipul'.DIRECTORY_SEPARATOR.'generator'.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'Stubs'.DIRECTORY_SEPARATOR);
+        $package_stubs_path = base_path('vendor'.DIRECTORY_SEPARATOR.'hijaumuda'.DIRECTORY_SEPARATOR.'generator'.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'Stubs'.DIRECTORY_SEPARATOR);
         if($this->files->exists($path)) 
             return $path;
         else

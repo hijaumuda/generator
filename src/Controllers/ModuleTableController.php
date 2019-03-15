@@ -1,11 +1,11 @@
 <?php
 
-namespace Bvipul\Generator\Controllers;
+namespace Hijaumuda\Generator\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
-use Bvipul\Generator\Repositories\ModuleRepository;
+use Hijaumuda\Generator\Repositories\ModuleRepository;
 
 class ModuleTableController extends Controller
 {

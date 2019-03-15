@@ -1,17 +1,12 @@
 <?php
 
-namespace Bvipul\Generator\Controllers;
+namespace Hijaumuda\Generator\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Access\Permission\Permission;
-use Bvipul\Generator\Repositories\ModuleRepository;
+use Hijaumuda\Generator\Repositories\ModuleRepository;
 
-/**
- * Class ModuleController.
- *
- * @author Vipul Basapati <basapativipulkumar@gmail.com | https://github.com/bvipul>
- */
 class ModuleController extends Controller
 {
     public $repository;

@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'Bvipul\Generator\Controllers', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['web', 'admin'] ], function () {
+Route::group(['namespace' => 'Hijaumuda\Generator\Controllers', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['web', 'admin'] ], function () {
 	Route::resource('modules', 'ModuleController');
 
     //For DataTables

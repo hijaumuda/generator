@@ -1,6 +1,6 @@
 <?php
 
-namespace Bvipul\Generator\Provider;
+namespace Hijaumuda\Generator\Provider;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -40,10 +40,10 @@ class CrudGeneratorServiceProvider extends ServiceProvider
     {
         include __DIR__.'/../routes.php';
         require_once(__DIR__.'/../helpers.php');
-        $this->app->make('Bvipul\Generator\Module');
-        $this->app->make('Bvipul\Generator\Controllers\Generator');
-        $this->app->make('Bvipul\Generator\Controllers\ModuleController');
-        $this->app->make('Bvipul\Generator\Repositories\ModuleRepository');
-        $this->app->make('Bvipul\Generator\Controllers\ModuleTableController');
+        $this->app->make('Hijaumuda\Generator\Module');
+        $this->app->make('Hijaumuda\Generator\Controllers\Generator');
+        $this->app->make('Hijaumuda\Generator\Controllers\ModuleController');
+        $this->app->make('Hijaumuda\Generator\Repositories\ModuleRepository');
+        $this->app->make('Hijaumuda\Generator\Controllers\ModuleTableController');
     }
 }
