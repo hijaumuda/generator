@@ -1,1 +1,1 @@
-generator for laravel-admin
+generator multi.biz
