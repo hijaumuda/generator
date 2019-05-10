@@ -3,35 +3,34 @@
 @section ('title', trans('labels.backend.dummy_small_plural_model.management') . ' | ' . trans('labels.backend.dummy_small_plural_model.create'))
 
 @section('page-header')
-    <h1>
-        {{ trans('labels.backend.dummy_small_plural_model.management') }}
-        <small>{{ trans('labels.backend.dummy_small_plural_model.create') }}</small>
-    </h1>
+    <h2>{{ trans('labels.backend.dummy_small_plural_model.create') }}</h2>
 @endsection
 
 @section('content')
     {{ Form::open(['route' => 'admin.dummy_small_plural_model.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post', 'id' => 'create-dummy_small_model']) }}
-
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">{{ trans('labels.backend.dummy_small_plural_model.create') }}</h3>
-
-                <div class="box-tools pull-right">
-                    @include('backend.dummy_small_plural_model.partials.dummy_small_plural_model-header-buttons')
-                </div><!--box-tools pull-right-->
-            </div><!--box-header with-border-->
-
-            <div class="box-body">
-                <div class="form-group">
-                    {{-- Including Form blade file --}}
-                    @include("backend.dummy_small_plural_model.form")
-                    <div class="edit-form-btn">
-                        {{ link_to_route('admin.dummy_small_plural_model.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger btn-md']) }}
-                        {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-primary btn-md']) }}
-                        <div class="clearfix"></div>
-                    </div><!--edit-form-btn-->
-                </div><!-- form-group -->
-            </div><!--box-body-->
-        </div><!--box box-success-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>{{ trans('labels.backend.dummy_small_plural_model.create') }}</h5>
+                    @section('action-button')
+                        <div class="title-action">
+                        @include('backend.dummy_small_plural_model.partials.dummy_small_plural_model-header-buttons')
+                        </div>
+                    @endsection
+                    </div>
+                    <div class="ibox-content">
+                        {{-- Including Form --}}
+                        @include("backend.dummy_small_plural_model.form")
+                        <div class="row">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                {{ link_to_route('admin.dummy_small_plural_model.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-white btn-sm']) }}
+                                {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-primary btn-sm']) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     {{ Form::close() }}
 @endsection

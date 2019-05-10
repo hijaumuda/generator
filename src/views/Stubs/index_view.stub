@@ -6,37 +6,42 @@
     <h1>{{ trans('labels.backend.dummy_small_plural_model.management') }}</h1>
 @endsection
 
+@section('action-button')
+    <div class="title-action">
+        @include('backend.dummy_small_plural_model.partials.dummy_small_plural_model-header-buttons')
+    </div>
+@endsection
+
 @section('content')
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.dummy_small_plural_model.management') }}</h3>
-
-            <div class="box-tools pull-right">
-                @include('backend.dummy_small_plural_model.partials.dummy_small_plural_model-header-buttons')
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-content"> 
+                    <div class="table-responsive data-table-wrapper">
+                        <table id="dummy_small_plural_model-table" class="table table-condensed table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>{{ trans('labels.backend.dummy_small_plural_model.table.id') }}</th>
+                                    <th>{{ trans('labels.backend.dummy_small_plural_model.table.createdat') }}</th>
+                                    <th>{{ trans('labels.general.actions') }}</th>
+                                </tr>
+                            </thead>
+                            <thead class="filters">
+                                <tr>
+                                    <th>
+                                        {!! Form::text('id', null, ["class" => "search-input-text form-control", "data-column" => 0, "placeholder" => trans('labels.backend.dummy_small_plural_model.table.id')]) !!}
+                                        <a class="reset-data" href="javascript:void(0)" style="display: none;"><i class="fa fa-times" onClick="$(this).parent().hide()"></i></a>
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div><!--box-header with-border-->
-
-        <div class="box-body">
-            <div class="table-responsive data-table-wrapper">
-                <table id="dummy_small_plural_model-table" class="table table-condensed table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th>{{ trans('labels.backend.dummy_small_plural_model.table.id') }}</th>
-                            <th>{{ trans('labels.backend.dummy_small_plural_model.table.createdat') }}</th>
-                            <th>{{ trans('labels.general.actions') }}</th>
-                        </tr>
-                    </thead>
-                    <thead class="transparent-bg">
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                </table>
-            </div><!--table-responsive-->
-        </div><!-- /.box-body -->
-    </div><!--box-->
+        </div>
+    </div>
 @endsection
 
 @section('after-scripts')
@@ -44,10 +49,18 @@
     {{ Html::script(mix('js/dataTable.js')) }}
 
     <script>
-        //Below written line is short form of writing $(document).ready(function() { })
         $(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
             var dataTable = $('#dummy_small_plural_model-table').dataTable({
+                autoWidth: false,
                 processing: true,
+                stateSave: true,
+                "sPaginationType": "full_numbers",
                 serverSide: true,
                 ajax: {
                     url: '{{ route("admin.dummy_small_plural_model.get") }}',
@@ -60,18 +73,38 @@
                 ],
                 order: [[0, "asc"]],
                 searchDelay: 500,
-                dom: 'lBfrtip',
+                dom: "<'centerprocess'r><'pagination-info'<'pagination-count'l>B<'pagination-links'f>>t <'pagination-info'<'pagination-count'i><'pagination-links'p><'toolbar'>>",
+                initComplete: function(){
+                  $("div.toolbar").html('<span class="jumto-label">Jump to</span><input id="input_page_number" class="inputnumber" autocomplete="off" onchange="JumpToPage(this.id)">');           
+                },
+
                 buttons: {
                     buttons: [
-                        { extend: 'copy', className: 'copyButton',  exportOptions: {columns: [ 0, 1 ]  }},
-                        { extend: 'csv', className: 'csvButton',  exportOptions: {columns: [ 0, 1 ]  }},
-                        { extend: 'excel', className: 'excelButton',  exportOptions: {columns: [ 0, 1 ]  }},
-                        { extend: 'pdf', className: 'pdfButton',  exportOptions: {columns: [ 0, 1 ]  }},
-                        { extend: 'print', className: 'printButton',  exportOptions: {columns: [ 0, 1 ]  }}
+                        {
+                            text: '<i class="fa fa-refresh"></i>',
+                            className: "btn btn-warning btnrefresh",
+                            action: function ( e, dt, node, config ) {
+                                $('input').val('');
+                                $('.reset-data').hide();
+                                dt
+                                .search( '' )
+                                .columns().search( '' )
+                                .draw();
+                            }
+                        }
                     ]
+                },
+                language: {
+                    @lang('datatable.strings')
+                },
+
+                "fnDrawCallback": function( oSettings ) {
+                    var api = this.api();
+
+                    //change input value JumpPageNumber after draw/click page (statesave = on).
+                    $('#input_page_number').val(api.page.info().page+1);
                 }
             });
-
             Backend.DataTableSearch.init(dataTable);
         });
     </script>
