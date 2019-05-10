@@ -1,22 +1,23 @@
-<div class="box-body">
-    <div class="form-group">
-        <div class="col-lg-10 col-lg-offset-1">
-            <div class="alert alert-warning">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="alert alert-warning alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                 Note : You need to have 0777 permission to all folders of the project.
             </div>
         </div>
     </div>
+
     <!-- Module Name -->
-    <div class="form-group">
+    <div class="form-group row">
         {{ Form::label('name', trans('generator::labels.modules.form.name'), ['class' => 'col-lg-2 control-label required']) }}
 
         <div class="col-lg-10">
             {{ Form::text('name', null, ['class' => 'form-control box-size', 'placeholder' => 'e.g., Blog', 'required' => 'required']) }}
         </div><!--col-lg-10-->
     </div>
-
+    <div class="hr-line-dashed"></div>
     <!-- Directory -->
-    <div class="form-group">
+    <div class="form-group row">
         {{ Form::label('directory_name', trans('generator::labels.modules.form.directory_name'), ['class' => 'col-lg-2 control-label required']) }}
 
         <div class="col-lg-10">
@@ -24,9 +25,9 @@
         </div><!--col-lg-10-->
     </div>
     <!-- End Directory -->
-
+    <div class="hr-line-dashed"></div>
     <!-- Model Name -->
-    <div class="form-group">
+    <div class="form-group row">
         {{ Form::label('model_name', trans('generator::labels.modules.form.model_name'), ['class' => 'col-lg-2 control-label required']) }}
 
         <div class="col-lg-10">
@@ -35,9 +36,9 @@
         </div>
     </div>
     <!-- End Model Name -->
-
+    <div class="hr-line-dashed"></div>
     <!-- Table Name -->
-    <div class="form-group">
+    <div class="form-group row">
         {{ Form::label('table_name', trans('generator::labels.modules.form.table_name'), ['class' => 'col-lg-2 control-label']) }}
 
         <div class="col-lg-10">
@@ -46,9 +47,9 @@
         </div><!--col-lg-10-->
     </div>
     <!-- End Table Name -->
-
+    <div class="hr-line-dashed"></div>
     <!-- Crud Operations Create/Edit/Delete to be added to the field (Read operation is given by default)-->
-    <div class="form-group">
+    <div class="form-group row">
         {{ Form::label('operations', 'CRUD Operations', ['class' => 'col-lg-2 control-label']) }}
         <div class="col-lg-8">
             <label class="control control--checkbox">
@@ -69,20 +70,19 @@
         </div>
     </div>
     <!-- End Crud Operations -->
+    <div class="hr-line-dashed"></div>
     <div class="box-header text-center">
-        <hr width=60%/>
         <h3 class="box-title"> Optional </h3>
-        <hr width=60%/>
     </div><!-- /.box-header -->
+
     <!-- Events --> 
     <div class="events-div">
-        <div class="form-group event clearfix">
+        <div class="form-group event clearfix row">
             {{ Form::label('event[]', trans('generator::labels.modules.form.event'), ['class' => 'col-lg-2 control-label']) }}
-
             <div class="col-lg-6">
                 {{ Form::text('event[]', null, ['class' => 'form-control box-size', 'placeholder' => trans('generator::labels.modules.form.event'), 'style' => 'width:100%']) }}
             </div><!--col-lg-10-->
-            <a href="#" class="btn btn-danger btn-md remove-field hidden">Remove Event</a>
+            <a href="#" class="btn btn-danger btn-md remove-field hidden mr-2">Remove Event</a>
             <a href="#" class="btn btn-primary btn-md add-field">Add Event</a>
         </div><!--form control-->
     </div>
@@ -90,13 +90,13 @@
     <div class="el-messages">
     </div>
     <!-- End Events -->
-
+    <div class="hr-line-dashed"></div>
     <!-- To Show the generated File -->
     <div class="box-body">
         <!--All Files -->
-        <div class="form-group">
+        <div class="row">
             <label class="col-lg-2 control-label">Files To Be Generated</label>
-            <div class="col-lg-10">
+            <div class="col-lg-12">
                 <textarea class="form-control box-size files" contenteditable="true" rows=15 readonly="">
                 </textarea>
             </div>
@@ -106,14 +106,14 @@
     <!-- End The File Generated Textbox -->
 
     <!-- Override CheckBox -->
-    <div class="form-group">
+    <div class="row">
         <div class="col-lg-2"></div>
-        <div class="col-lg-10">
-            <p><strong>Note : </strong> The Files would be overwritten, if already exists. Please look at files (and their respective paths) carefully before creating.</p>
+        <div class="col-lg-12">
+            <strong>Note : </strong> The Files would be overwritten, if already exists. Please look at files (and their respective paths) carefully before creating.
         </div><!--form control-->
     </div>
     <!-- end Override Checkbox -->
-</div>
+
 @section("after-scripts")
     {!! Html::script('js/backend/pluralize.js') !!}
     <script type="text/javascript">
