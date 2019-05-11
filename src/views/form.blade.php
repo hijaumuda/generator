@@ -12,7 +12,7 @@
         {{ Form::label('name', trans('generator::labels.modules.form.name'), ['class' => 'col-lg-2 control-label required']) }}
 
         <div class="col-lg-10">
-            {{ Form::text('name', null, ['class' => 'form-control box-size', 'placeholder' => 'e.g., Blog', 'required' => 'required']) }}
+            {{ Form::text('name', null, ['class' => 'form-control box-size', 'placeholder' => 'e.g., Blog / Blog Category', 'required' => 'required']) }}
         </div><!--col-lg-10-->
     </div>
     <div class="hr-line-dashed"></div>
@@ -21,7 +21,7 @@
         {{ Form::label('directory_name', trans('generator::labels.modules.form.directory_name'), ['class' => 'col-lg-2 control-label required']) }}
 
         <div class="col-lg-10">
-            {{ Form::text('directory_name', null, ['class' => 'form-control box-size', 'placeholder' => 'e.g., Blog', 'required' => true]) }}
+            {{ Form::text('directory_name', null, ['class' => 'form-control box-size', 'placeholder' => 'e.g., Blog / Blog Category / Blog Categories (use space if more than one words.)', 'required' => true]) }}
         </div><!--col-lg-10-->
     </div>
     <!-- End Directory -->
@@ -31,7 +31,7 @@
         {{ Form::label('model_name', trans('generator::labels.modules.form.model_name'), ['class' => 'col-lg-2 control-label required']) }}
 
         <div class="col-lg-10">
-            {{ Form::text('model_name', null, ['class' => 'form-control box-size only-text', 'placeholder' => 'e.g., Blog', 'required' => true]) }}
+            {{ Form::text('model_name', null, ['class' => 'form-control box-size only-text', 'placeholder' => 'e.g., Blog / BlogCategory', 'required' => true]) }}
             <div class="model-messages"></div>
         </div>
     </div>
@@ -42,7 +42,7 @@
         {{ Form::label('table_name', trans('generator::labels.modules.form.table_name'), ['class' => 'col-lg-2 control-label']) }}
 
         <div class="col-lg-10">
-            {{ Form::text('table_name', null, ['class' => 'form-control box-size', 'placeholder' => 'e.g., Blog']) }}
+            {{ Form::text('table_name', null, ['class' => 'form-control box-size', 'placeholder' => 'e.g., Blog / blog_categories']) }}
             <div class="table-messages"></div>
         </div><!--col-lg-10-->
     </div>

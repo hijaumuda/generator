@@ -185,19 +185,19 @@ class Generator
         $this->module = title_case($input['name']);
 
         //Directory
-        $this->directory = str_replace(' ' , '', str_singular(title_case($input['directory_name'])));
+        $this->directory = str_plural(str_replace(' ' , '', title_case($input['directory_name'])));
 
         //Model
-        $this->model = str_singular(title_case($input['model_name']));
+        $this->model = str_singular($input['model_name']);
 
         //Table
-        $this->table = strtolower($input['table_name']);
+        $this->table = strtolower(str_plural($input['table_name']));
 
         //Controller
-        $this->controller = str_plural($this->model).'Controller';
+        $this->controller = $this->directory.'Controller';
 
         //Table Controller
-        $this->table_controller = str_plural($this->model).'TableController';
+        $this->table_controller = $this->directory.'TableController';
 
         //Attributes
         $this->attribute = $this->model.'Attribute';
@@ -208,15 +208,15 @@ class Generator
         $this->relationship_namespace = $this->model_namespace;
 
         //Repository
-        $this->repository = $this->model.'Repository';
+        $this->repository = $this->directory.'Repository';
 
         //Requests
-        $this->edit_request = 'Edit'.$this->model.'Request';
-        $this->store_request = 'Store'.$this->model.'Request';
-        $this->create_request = 'Create'.$this->model.'Request';
-        $this->update_request = 'Update'.$this->model.'Request';
-        $this->delete_request = 'Delete'.$this->model.'Request';
-        $this->manage_request = 'Manage'.$this->model.'Request';
+        $this->edit_request = 'Edit'.$this->directory.'Request';
+        $this->store_request = 'Store'.$this->directory.'Request';
+        $this->create_request = 'Create'.$this->directory.'Request';
+        $this->update_request = 'Update'.$this->directory.'Request';
+        $this->delete_request = 'Delete'.$this->directory.'Request';
+        $this->manage_request = 'Manage'.$this->directory.'Request';
 
         //CRUD Options
         $this->edit = !empty($input['model_edit']) ? true : false;
@@ -733,7 +733,7 @@ class Generator
     public function insertToLanguageFiles()
     {
         //Model singular version
-        $model_singular = ucfirst(str_singular($this->model));
+        $model_singular = $this->module;
         //Model Plural version
         $model_plural = strtolower(str_plural($this->model));
         //Model plural with capitalize
